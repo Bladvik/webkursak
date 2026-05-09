@@ -8,7 +8,7 @@ const app = express();
 
 // 1. CORS МАЄ БУТИ НАЙПЕРШИМ МІДЛВАРОМ!
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://webkursak-b1l88ueda-bladvik-s-projects.vercel.app/'], // Дозволяємо обидва!
+  origin: ['http://localhost:5173', 'https://webkursak-b1l88ueda-bladvik-s-projects.vercel.app'], // Дозволяємо обидва!
   credentials: true,
 }));
 // 2. Тепер парсери (збільшили ліміт для великих збірок)

@@ -2,7 +2,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://webkursak.onrender.com/', // Update to your production URL later
+  // ДОДАНО /api В КІНЦІ ПОСИЛАННЯ!
+  baseURL: 'https://webkursak.onrender.com/api', 
+  withCredentials: true, // Дозволяє передачу токенів/куків між доменами
   headers: {
     'Content-Type': 'application/json',
   },
@@ -14,9 +16,13 @@ api.interceptors.request.use(
     // We parse the Zustand persist storage to grab the token
     const authStorage = localStorage.getItem('auth-storage');
     if (authStorage) {
-      const { state } = JSON.parse(authStorage);
-      if (state && state.token) {
-        config.headers.Authorization = `Bearer ${state.token}`;
+      try {
+        const { state } = JSON.parse(authStorage);
+        if (state && state.token) {
+          config.headers.Authorization = `Bearer ${state.token}`;
+        }
+      } catch (err) {
+        console.error("Error parsing auth-storage", err);
       }
     }
     return config;
