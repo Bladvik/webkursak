@@ -8,8 +8,14 @@ const app = express();
 
 // 1. CORS МАЄ БУТИ НАЙПЕРШИМ МІДЛВАРОМ!
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://webkursak-b1l88ueda-bladvik-s-projects.vercel.app'], // Дозволяємо обидва!
-  credentials: true,
+  origin: [
+    'http://localhost:5173', 
+    'https://webkursak.vercel.app', // Твій основний домен Vercel
+    'https://webkursak-pxzbqupnn-bladvik-s-projects.vercel.app' // Домен з твого останнього скріншоту
+  ],
+  credentials: true, // Дозволяє передавати токени та куки
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 // 2. Тепер парсери (збільшили ліміт для великих збірок)
 app.use(express.json({ limit: '10mb' }));
