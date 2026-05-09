@@ -164,8 +164,9 @@ export default function AuthView({ initialMode = 'login' }) {
     } finally { setLoading(false); }
   };
 
-  const handleOAuth = (provider) => { window.location.href = `http://localhost:5000/api/auth/${provider.toLowerCase()}`; };
-
+const handleOAuth = (provider) => { 
+  window.location.href = `https://webkursak.onrender.com/api/auth/${provider.toLowerCase()}`; 
+};
   const LANGUAGES = [
     { code: 'en', label: 'English' },
     { code: 'uk', label: 'Українська' },

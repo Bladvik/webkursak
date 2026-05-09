@@ -100,11 +100,8 @@ router.get('/me', protect, getMe);
 // 4. OAUTH РОУТИ
 const handleOAuthRedirect = (req, res) => {
   const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
-  const frontendURL = process.env.NODE_ENV === 'production' 
-    ? 'https://webkursak-b1l88ueda-bladvik-s-projects.vercel.app' 
-    : 'http://localhost:5173';
-
-  res.redirect(`${frontendURL}/?token=${token}`);
+  // ЗАМІНИ ТУТ (на свій Vercel):
+  res.redirect(`https://webkursak-b1l88ueda-bladvik-s-projects.vercel.app/?token=${token}`);
 };
 
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'], session: false }));
