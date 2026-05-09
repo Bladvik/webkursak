@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Update to your production URL later
+  baseURL: 'https://webkursak.onrender.com/', // Update to your production URL later
   headers: {
     'Content-Type': 'application/json',
   },

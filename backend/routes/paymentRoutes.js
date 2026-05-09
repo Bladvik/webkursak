@@ -41,8 +41,8 @@ router.post('/create-checkout-session', protect, async (req, res) => {
         plan: String(plan) 
       },
       
-      success_url: `http://localhost:5173/?payment=success&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `http://localhost:5173/#pricing`,
+      success_url: `https://webkursak-b1l88ueda-bladvik-s-projects.vercel.app/?payment=success&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `https://webkursak-b1l88ueda-bladvik-s-projects.vercel.app/#pricing`,
     });
 
     console.log("✅ Платіжну сесію створено успішно!");
