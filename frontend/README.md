@@ -1,4 +1,4 @@
-# 🖥️ PCWITHBLADVIK - 3D PC Builder & Hardware Configurator
+#  PCWITHBLADVIK - 3D PC Builder & Hardware Configurator
 
 ![Project Status](https://img.shields.io/badge/Status-Beta_V1.0-blue.svg)
 ![React](https://img.shields.io/badge/Frontend-React_18-61DAFB.svg)
@@ -8,17 +8,17 @@
 
 **PCWITHBLADVIK** is an advanced, interactive web application that allows users to build, customize, and analyze custom PCs in real-time 3D. It acts as an intelligent hardware assistant, preventing bottleneck issues and ensuring component compatibility.
 
-## ✨ Key Features
+##  Key Features
 
-- **🎮 Real-Time 3D Visualization:** Assemble your PC visually. Components snap into place inside a fully rendered 3D chassis using React Three Fiber.
-- **🧠 Smart Compatibility Engine:** Automatically checks for Socket mismatches, RAM types, PSU wattage limits, and physical GPU clearance.
-- **📊 Telemetry & Benchmarks:** Calculates estimated total wattage, thermal output, and simulates 1440p gaming FPS (CS2, Cyberpunk 2077, Warzone) based on CPU+GPU combos.
-- **🎨 Aura Studio (RGB Control):** Deep customization of components. Change base colors and sync RGB lighting globally or individually per component.
-- **💳 SaaS Subscription Model:** Integrated **Stripe** payments with automated role updating (`user`, `pro`, `elite`) to unlock premium features like unlimited saves and Aura Studio.
-- **🌍 Multi-language Support:** Fully translated into 7 languages (EN, UK, IT, PL, ES, FR, DE).
-- **🔒 Secure Authentication:** JWT-based user authentication and encrypted passwords.
+- ** Real-Time 3D Visualization:** Assemble your PC visually. Components snap into place inside a fully rendered 3D chassis using React Three Fiber.
+- ** Smart Compatibility Engine:** Automatically checks for Socket mismatches, RAM types, PSU wattage limits, and physical GPU clearance.
+- ** Telemetry & Benchmarks:** Calculates estimated total wattage, thermal output, and simulates 1440p gaming FPS (CS2, Cyberpunk 2077, Warzone) based on CPU+GPU combos.
+- ** Aura Studio (RGB Control):** Deep customization of components. Change base colors and sync RGB lighting globally or individually per component.
+- ** SaaS Subscription Model:** Integrated **Stripe** payments with automated role updating (`user`, `pro`, `elite`) to unlock premium features like unlimited saves and Aura Studio.
+- ** Multi-language Support:** Fully translated into 7 languages (EN, UK, IT, PL, ES, FR, DE).
+- ** Secure Authentication:** JWT-based user authentication and encrypted passwords.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 **Frontend:**
 - React (Vite)
@@ -34,7 +34,7 @@
 - JSON Web Tokens (JWT) & bcryptjs (Auth)
 - Stripe API (Payment Processing)
 
-## 🚀 Getting Started
+##  Getting Started
 
 Follow these instructions to run the project locally.
 
@@ -51,35 +51,27 @@ git clone [https://github.com/yourusername/pcwithbladvik.git](https://github.com
 cd pcwithbladvik
 2. Setup the Backend:
 
-Bash
 cd backend
 npm install
 Create a .env file in the backend directory and add the following variables:
 
-Фрагмент коду
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_super_secret_jwt_key
 STRIPE_SECRET_KEY=sk_test_your_stripe_key
 Start the backend server:
 
-Bash
 npm run dev
 3. Setup the Frontend:
 Open a new terminal window/tab:
 
-Bash
 cd frontend
 npm install
 Start the frontend development server:
 
-Bash
 npm run dev
 4. Access the Application:
 Open your browser and navigate to http://localhost:5173.
 
 🧑‍💻 Author
 Developed by Maksym Pasternak.
-
-
-***
