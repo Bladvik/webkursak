@@ -9,7 +9,6 @@ const app = express();
 // 1. CORS МАЄ БУТИ НАЙПЕРШИМ МІДЛВАРОМ!
 app.use(cors({
   origin: [
-    'http://localhost:5173', 
     'https://webkursak.vercel.app', // Твій основний домен Vercel
     'https://webkursak-pxzbqupnn-bladvik-s-projects.vercel.app' // Домен з твого останнього скріншоту
   ],
