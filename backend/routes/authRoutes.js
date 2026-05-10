@@ -12,13 +12,19 @@ const User = require('../models/User');
 
 // Налаштовуємо поштаря
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true, // використовуємо SSL
+  service: 'gmail', // Якщо вказуєш service, host і port не потрібні
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS // сюди прийде App Password з Render
+    pass: process.env.EMAIL_PASS 
+  }
+});
+
+// 🚀 ТЕСТ ПІДКЛЮЧЕННЯ (спрацює при запуску сервера)
+transporter.verify(function(error, success) {
+  if (error) {
+    console.error("🔴 ПОМИЛКА ПІДКЛЮЧЕННЯ ДО ПОШТИ:", error);
+  } else {
+    console.log("🟢 ПОШТА УСПІШНО ПІДКЛЮЧЕНА! Можна відправляти листи.");
   }
 });
 
@@ -51,6 +57,7 @@ router.post('/send-otp', async (req, res) => {
 
     res.json({ message: "Код відправлено!" });
   } catch (error) {
+    console.error("🔴 ПОМИЛКА ВІДПРАВКИ ЛИСТА:", error);
     res.status(500).json({ message: "Помилка при відправці листа." });
   }
 });
