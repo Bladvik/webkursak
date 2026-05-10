@@ -100,8 +100,11 @@ router.get('/me', protect, getMe);
 // 4. OAUTH РОУТИ
 const handleOAuthRedirect = (req, res) => {
   const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
-  // ЗАМІНИ ТУТ (на свій Vercel):
-  res.redirect(`https://webkursak-b1l88ueda-bladvik-s-projects.vercel.app/?token=${token}`);
+  
+  // Використовуй тільки основний домен, на якому ти зазвичай відкриваєш сайт
+  const frontendURL = 'https://webkursak.vercel.app'; 
+
+  res.redirect(`https://webkursak.vercel.app/?token=${token}`);
 };
 
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'], session: false }));

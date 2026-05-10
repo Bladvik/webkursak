@@ -17,21 +17,31 @@ export default function App() {
   const { currentView, ui } = useStore();
   const { setCredentials } = useAuthStore();
 
+  // App.jsx
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
 
     if (token) {
-      localStorage.setItem('token', token);
-      api.get('/auth/me', { headers: { Authorization: `Bearer ${token}` } })
-        .then(res => {
-          setCredentials(res.data, token);
-          window.history.replaceState({}, document.title, window.location.pathname);
-        })
-        .catch(err => {
-          console.error('Помилка авторизації', err);
-          localStorage.removeItem('token');
-        });
+      // Спочатку записуємо токен, щоб наступні запити вже його бачили
+      localStorage.setItem('token', token); 
+
+      api.get('/auth/me', { 
+        headers: { Authorization: `Bearer ${token}` } 
+      })
+      .then(res => {
+        // Оновлюємо стан юзера в магазині
+        setCredentials(res.data, token);
+        
+        // Очищаємо URL від токена ТІЛЬКИ після успішного входу
+        window.history.replaceState({}, document.title, window.location.pathname);
+        console.log("✅ Успішний вхід через соціальну мережу!");
+      })
+      .catch(err => {
+        console.error('🔴 Помилка авторизації при отриманні даних користувача:', err);
+        localStorage.removeItem('token');
+      });
     }
   }, [setCredentials]);
 
