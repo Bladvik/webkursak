@@ -87,8 +87,10 @@ router.post('/register', async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
     res.status(201).json({ _id: user.id, name: user.name, email: user.email, role: user.role, token });
-  } catch (error) {
-    res.status(500).json({ message: "Помилка сервера." });
+} catch (error) {
+    // ДОДАЙ ЦЕЙ РЯДОК:
+    console.error("🔴 ПОМИЛКА NODEMAILER:", error);
+    res.status(500).json({ message: "Помилка при відправці листа." });
   }
 });
 
