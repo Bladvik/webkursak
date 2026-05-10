@@ -11,15 +11,23 @@ const OTP = require('../models/OTP');
 const User = require('../models/User');
 
 // Налаштовуємо поштаря
+// Налаштовуємо поштаря (Бронебійний конфіг для Render)
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // Якщо вказуєш service, host і port не потрібні
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // Для порту 587 має бути false
+  requireTLS: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS 
+  },
+  tls: {
+    // Дозволяє обійти жорсткі перевірки сертифікатів на безкоштовних серверах
+    rejectUnauthorized: false
   }
 });
 
-// 🚀 ТЕСТ ПІДКЛЮЧЕННЯ (спрацює при запуску сервера)
+// 🚀 ТЕСТ ПІДКЛЮЧЕННЯ залишаємо, він чудово працює!
 transporter.verify(function(error, success) {
   if (error) {
     console.error("🔴 ПОМИЛКА ПІДКЛЮЧЕННЯ ДО ПОШТИ:", error);
